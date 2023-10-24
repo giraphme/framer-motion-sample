@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 function App() {
   return (
     <>
       <SpringBalls />
       <SpringComplex />
+      <AddCard />
     </>
   );
 }
@@ -105,6 +107,94 @@ function SpringComplex() {
         />
       </div>
     </div>
+  );
+}
+
+function AddCard() {
+  const [isOpen, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      style={{
+        marginBottom: 50,
+        display: "flex",
+        border: "1px solid #ccc",
+        borderRadius: 5,
+        padding: "10px 40px 10px 20px",
+        width: "fit-content",
+        position: "relative",
+        whiteSpace: "nowrap",
+      }}
+      variants={{
+        open: {
+          cursor: "default",
+          width: "300px",
+        },
+        close: {
+          cursor: "pointer",
+        },
+      }}
+      animate={isOpen ? "open" : "close"}
+      onClick={() => !isOpen && setOpen(true)}
+    >
+      <AnimatePresence mode="wait">
+        {isOpen ? (
+          <motion.div
+            style={{ opacity: 1, display: "flex", width: "100%" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <input
+              type="text"
+              placeholder="タグ名"
+              style={{
+                fontSize: "16px",
+                border: "none",
+                outline: "none",
+                padding: 0,
+                display: "block",
+                height: "1.5rem",
+                flexGrow: 1,
+                width: "100%",
+              }}
+              autoFocus
+            />
+            <button style={{ flexShrink: 1 }}>登録</button>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            タグを追加
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.svg
+        height="24"
+        viewBox="0 -960 960 960"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ position: "absolute", right: "5px" }}
+        variants={{
+          open: {
+            cursor: "pointer",
+            rotate: 315,
+          },
+          close: { rotate: -180 },
+        }}
+        transition={{
+          type: "spring",
+          bounce: 0.3,
+          duration: 1,
+        }}
+        onClick={() => isOpen && setOpen(false)}
+      >
+        <path d="m440-440h-240v-80h240v-240h80v240h240v80h-240v240h-80z" />
+      </motion.svg>
+    </motion.div>
   );
 }
 
