@@ -7,6 +7,7 @@ function App() {
       <SpringBalls />
       <SpringComplex />
       <AddCard />
+      <HomeBadge />
     </>
   );
 }
@@ -195,6 +196,64 @@ function AddCard() {
         <path d="m440-440h-240v-80h240v-240h80v240h240v80h-240v240h-80z" />
       </motion.svg>
     </motion.div>
+  );
+}
+
+function HomeBadge() {
+  return (
+    <div style={{ marginBottom: 50 }}>
+      描画領域に入った時にアニメーション開始
+      <div
+        style={{
+          width: "50px",
+          height: "50px",
+          borderRadius: 1000,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 0 20px 5px #55555521",
+          border: "1px solid #ddd",
+          marginLeft: 32,
+          position: "relative",
+        }}
+      >
+        <motion.div
+          style={{
+            position: "absolute",
+            top: -2,
+            right: -2,
+            fontSize: "12px",
+            width: "20px",
+            height: "20px",
+            background: "red",
+            color: "white",
+            fontWeight: "bolder",
+            borderRadius: 1000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          initial={{ opacity: 0, scale: 0, translateY: 10, translateX: -10 }}
+          whileInView={{ opacity: 1, scale: 1, translateY: 0, translateX: 0 }}
+          transition={{
+            type: "spring",
+            bounce: 0.7,
+            delay: 0.5,
+          }}
+          viewport={{ once: true }}
+        >
+          3
+        </motion.div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 -960 960 960"
+          width="24"
+        >
+          <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+        </svg>
+      </div>
+    </div>
   );
 }
 
