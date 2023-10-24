@@ -8,6 +8,7 @@ function App() {
       <SpringComplex />
       <AddCard />
       <HomeBadge />
+      <AnimatedIcons />
     </>
   );
 }
@@ -253,6 +254,199 @@ function HomeBadge() {
           <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
         </svg>
       </div>
+    </div>
+  );
+}
+
+function AnimatedIcons() {
+  return (
+    <div style={{ marginBottom: 50 }}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        style={{
+          marginRight: 24,
+        }}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <motion.rect
+          width="9"
+          height="6"
+          x="6"
+          y="14"
+          rx="2"
+          initial={{ translateX: "15%" }}
+          animate={{ translateX: "0" }}
+          transition={{
+            duration: 0.2,
+            delay: 1,
+            repeat: Infinity,
+            repeatDelay: 2,
+            repeatType: "mirror",
+          }}
+        />
+        <rect width="16" height="6" x="6" y="4" rx="2" />
+        <path d="M2 2v20" />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        style={{
+          marginRight: 24,
+        }}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect width="6" height="16" x="4" y="6" rx="2" />
+        <motion.rect
+          width="6"
+          height="9"
+          x="14"
+          y="6"
+          rx="2"
+          initial={{ translateY: "15%" }}
+          animate={{ translateY: "0" }}
+          transition={{
+            duration: 0.2,
+            delay: 1,
+            repeat: Infinity,
+            repeatDelay: 2,
+            repeatType: "mirror",
+          }}
+        />
+        <path d="M22 2H2" />
+      </svg>
+
+      <motion.svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        style={{
+          marginRight: 24,
+        }}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        animate={{ rotate: [0, 8, -6, 4, -2, 1, 0] }}
+        transition={{
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: "mirror",
+        }}
+      >
+        <circle cx="12" cy="13" r="8" />
+        <motion.path
+          d="M5 3 2 6"
+          style={{ originX: "center", originY: "center" }}
+          initial={{ rotate: 3 }}
+          animate={{ rotate: -3 }}
+          transition={{
+            duration: 0.2,
+            repeat: Infinity,
+            repeatType: "mirror",
+            repeatDelay: 0,
+          }}
+        />
+        <motion.path
+          d="m22 6-3-3"
+          style={{ originX: "center", originY: "center" }}
+          initial={{ rotate: 3 }}
+          animate={{ rotate: -3 }}
+          transition={{
+            duration: 0.2,
+            repeat: Infinity,
+            repeatType: "mirror",
+            repeatDelay: 0,
+          }}
+        />
+        <path d="M6.38 18.7 4 21" />
+        <path d="M17.64 18.67 20 21" />
+        <path d="m9 13 2 2 4-4" />
+      </motion.svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        style={{
+          marginRight: 24,
+        }}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <motion.g
+          style={{ originX: "center", originY: "center" }}
+          initial={{ opacity: 0, rotateX: 180, translateX: -10 }}
+          animate={{ opacity: 1, rotateX: 0, translateX: 0 }}
+          transition={{
+            type: "spring",
+            bounce: 0.5,
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "loop",
+            repeatDelay: 1,
+            opacity: { bounce: 0 },
+          }}
+        >
+          <path d="M8 12h8" />
+          <path d="m12 16 4-4-4-4" />
+        </motion.g>
+      </svg>
+      <motion.svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        style={{
+          marginRight: 24,
+        }}
+        viewBox="0 0 24 24"
+        fill="none"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ stroke: "#333333" }}
+        animate={{ stroke: "#aaaaaa" }}
+        transition={{
+          duration: 0.2,
+          repeat: Infinity,
+          repeatType: "mirror",
+          repeatDelay: 1.5,
+        }}
+      >
+        <rect width="20" height="12" x="2" y="6" rx="6" ry="6" />
+        <motion.circle
+          cx="8"
+          cy="12"
+          r="2"
+          initial={{ translateX: "35%", fill: "#ff0000ff" }}
+          animate={{ translateX: "0%", fill: "#ff000000" }}
+          transition={{
+            type: "spring",
+            duration: 0.5,
+            repeat: Infinity,
+            repeatType: "mirror",
+            repeatDelay: 1.2,
+          }}
+        />
+      </motion.svg>
     </div>
   );
 }
